@@ -298,7 +298,7 @@ PAGINATION:
         # File filtering
         if "glob" in input:
             cmd.extend(["--glob", input["glob"]])
-        if "type" in input:
+        if input.get("type"):
             file_type = input["type"].lower()
             # Normalize aliases (e.g., "typescript" -> "ts", "python" -> "py")
             file_type = self.TYPE_ALIASES.get(file_type, file_type)
@@ -513,7 +513,7 @@ PAGINATION:
 
         # Build glob pattern from type or glob parameter
         glob_pattern = input.get("glob", "**/*")
-        if "type" in input:
+        if input.get("type"):
             file_type = input["type"].lower()
             # Normalize aliases (e.g., "typescript" -> "ts", "python" -> "py")
             file_type = self.TYPE_ALIASES.get(file_type, file_type)
